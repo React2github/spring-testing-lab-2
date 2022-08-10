@@ -8,13 +8,15 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class BitCoinService {
 
-    public double getBitcoinPrice() {
-        String apiURL = "https://api.coincap.io/v2/assets/bitcoin";
+    public double getBitcoinPrice(String name) {
+        String apiURL = "https://api.coincap.io/v2/assets/" + name;
         RestTemplate restTemplate = new RestTemplate();
-        Data result = restTemplate.getForObject(apiURL, Data.class);
+        DataDTO result = restTemplate.getForObject(apiURL, DataDTO.class);
 
         return Double.parseDouble(result.getData().getPriceUsd());
     }
+
+
 
 }
 
@@ -28,6 +30,6 @@ class BitCoin {
 
 @Getter
 @Setter
-class Data{
+class DataDTO {
     private BitCoin data;
 }

@@ -8,18 +8,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class BitcoinDataController {
 
-@Autowired
-private BitCoinService bitcoinService;
+    @Autowired
+    private BitCoinService bitcoinService;
 
-public BitcoinDataController(BitCoinService bitcoinService) {
-
-    this.bitcoinService = bitcoinService;
-}
+    public BitcoinDataController(BitCoinService bitcoinService) {
+        this.bitcoinService = bitcoinService;
+    }
 
     @GetMapping("/bitcoin")
     public String getPrice() {
-    String response = "The price of one bitcoin is " + Math.round(bitcoinService.getBitcoinPrice());
- return response;
+        String response = "The current price for one Bitcoin is " + Math.round(bitcoinService.getBitcoinPrice("bitcoin"));
+        return response;
     }
 
 }
