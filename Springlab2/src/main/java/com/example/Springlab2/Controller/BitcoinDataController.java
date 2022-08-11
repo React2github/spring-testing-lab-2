@@ -17,8 +17,9 @@ public class BitcoinDataController {
 
     @GetMapping("/bitcoin")
     public String getPrice() {
-        String response = "The current price for one Bitcoin is " + Math.round(bitcoinService.getBitcoinPrice("bitcoin"));
+        String response = "The current price for one Bitcoin is " + (bitcoinService.getBitcoinPrice("bitcoin"));
         return response;
+
     }
 
 }
