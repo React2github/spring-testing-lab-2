@@ -1,5 +1,6 @@
 package com.example.Springlab2.Configuration;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -12,6 +13,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+@Slf4j
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration {
@@ -21,6 +26,7 @@ public class SecurityConfiguration {
 //        http.authorizeRequests()
 //                .antMatchers("/bitcoin")
 //                .hasAuthority("admin");
+        log.trace("tracing message");
 
         http.authorizeRequests()
                 .antMatchers("/bitcoin")
@@ -37,7 +43,7 @@ public class SecurityConfiguration {
                 .and()
                 .oauth2Login();
 
-
+        log.trace("tracing message");
         return http.build();
     }
 
